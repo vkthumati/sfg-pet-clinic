@@ -9,7 +9,7 @@ public interface PersonService {
 
     public Person findById(Long Id);
 
-    public void save(Person person);
+    public Person save(Person person);
 
     public Set<Person> findAll();
 }

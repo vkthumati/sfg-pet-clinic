@@ -7,7 +7,7 @@ import java.util.Set;
 public interface PetService {
     public Pet findById(Long Id);
 
-    public void save(Pet pet);
+    public Pet save(Pet pet);
 
     public Set<Pet> findAll();
 }
