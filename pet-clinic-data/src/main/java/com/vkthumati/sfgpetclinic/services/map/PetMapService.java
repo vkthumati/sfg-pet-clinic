@@ -1,12 +1,11 @@
 package com.vkthumati.sfgpetclinic.services.map;
 
-import com.vkthumati.sfgpetclinic.model.Person;
 import com.vkthumati.sfgpetclinic.model.Pet;
-import com.vkthumati.sfgpetclinic.services.CrudService;
+import com.vkthumati.sfgpetclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetMapService extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
         return super.findAll();

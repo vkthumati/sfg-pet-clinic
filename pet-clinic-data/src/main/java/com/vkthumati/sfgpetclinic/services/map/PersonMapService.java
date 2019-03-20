@@ -2,10 +2,11 @@ package com.vkthumati.sfgpetclinic.services.map;
 
 import com.vkthumati.sfgpetclinic.model.Person;
 import com.vkthumati.sfgpetclinic.services.CrudService;
+import com.vkthumati.sfgpetclinic.services.PersonService;
 
 import java.util.Set;
 
-public class PersonMapService extends AbstractMapService<Person, Long> implements CrudService<Person, Long> {
+public class PersonMapService extends AbstractMapService<Person, Long> implements PersonService {
     @Override
     public Set<Person> findAll() {
         return super.findAll();
@@ -29,5 +30,10 @@ public class PersonMapService extends AbstractMapService<Person, Long> implement
     @Override
     public void deleteById(Long id) {
         super.deleteById(id);
+    }
+
+    @Override
+    public Person findByLastName(String lastName) {
+        return null;
     }
 }
