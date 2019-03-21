@@ -1,12 +1,11 @@
 package com.vkthumati.sfgpetclinic.services.map;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import com.vkthumati.sfgpetclinic.model.BaseEntity;
 
-public abstract class AbstractMapService<T, ID> {
-    protected Map<ID, T> map = new HashMap<>();
+import java.util.*;
+
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
+    protected Map<Long , T> map = new HashMap<>();
 
     Set<T> findAll(){
         return new HashSet<>(map.values());
@@ -16,8 +15,15 @@ public abstract class AbstractMapService<T, ID> {
         return map.get(id);
     }
 
-    T save(ID id, T domain){
-        map.put(id, domain);
+    T save(T domain){
+        if(domain!=null){
+            if(domain.getId()==null){
+                domain.setId(getNextId());
+            }
+            map.put(domain.getId(), domain);
+        }else{
+            throw new RuntimeException("Object can't be null");
+        }
         return domain;
     }
 
@@ -27,5 +33,15 @@ public abstract class AbstractMapService<T, ID> {
 
     void delete(T domain){
         map.entrySet().removeIf(entry -> entry.getValue().equals(domain));
+    }
+
+    private Long getNextId(){
+        Long nextId = null;
+        try{
+            nextId = Collections.max(map.keySet());
+        }catch (NoSuchElementException ex){
+            nextId = 1L;
+        }
+        return nextId+1;
     }
 }

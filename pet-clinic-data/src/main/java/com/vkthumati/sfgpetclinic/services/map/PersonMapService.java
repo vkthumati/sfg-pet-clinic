@@ -21,7 +21,7 @@ public class PersonMapService extends AbstractMapService<Person, Long> implement
 
     @Override
     public Person save(Person domain) {
-        return super.save(domain.getId(), domain);
+        return super.save(domain);
     }
 
     @Override
