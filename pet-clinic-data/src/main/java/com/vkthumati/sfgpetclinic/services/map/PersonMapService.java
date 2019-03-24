@@ -3,11 +3,13 @@ package com.vkthumati.sfgpetclinic.services.map;
 import com.vkthumati.sfgpetclinic.model.Person;
 import com.vkthumati.sfgpetclinic.services.CrudService;
 import com.vkthumati.sfgpetclinic.services.PersonService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class PersonMapService extends AbstractMapService<Person, Long> implements PersonService {
     @Override
     public Set<Person> findAll() {
