@@ -1,10 +1,23 @@
 package com.vkthumati.sfgpetclinic.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "visits")
 public class Visit extends BaseEntity {
+
+    @Column(name = "visit_date")
+    //@CreationTimestamp("")
     private LocalDate visitDate;
+
+    @Column(name = "description")
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "pet_id ")
     private Pet pet;
 
     public LocalDate getVisitDate() {
