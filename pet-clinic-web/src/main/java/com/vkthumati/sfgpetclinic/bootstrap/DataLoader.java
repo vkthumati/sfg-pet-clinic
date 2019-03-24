@@ -1,10 +1,7 @@
 package com.vkthumati.sfgpetclinic.bootstrap;
 
 import com.vkthumati.sfgpetclinic.model.*;
-import com.vkthumati.sfgpetclinic.services.OwnerService;
-import com.vkthumati.sfgpetclinic.services.PetTypeService;
-import com.vkthumati.sfgpetclinic.services.SpecialtyService;
-import com.vkthumati.sfgpetclinic.services.VetService;
+import com.vkthumati.sfgpetclinic.services.*;
 import com.vkthumati.sfgpetclinic.services.map.OwnerMapService;
 import com.vkthumati.sfgpetclinic.services.map.VetMapService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +17,15 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -116,5 +115,19 @@ public class DataLoader implements CommandLineRunner {
         vetService.save(vet);
 
         System.out.println("Loaded Vets .............");
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionaPet);
+        catVisit.setVisitDate(LocalDate.now());
+        catVisit.setDescription("Sneezy Kitty");
+
+        visitService.save(catVisit);
+
+        Visit dogVisit = new Visit();
+        dogVisit.setPet(mikesPet);
+        dogVisit.setVisitDate(LocalDate.now());
+        dogVisit.setDescription("Sneezy Puppy");
+
+        visitService.save(dogVisit);
     }
 }
