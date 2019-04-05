@@ -1,7 +1,6 @@
 package com.vkthumati.sfgpetclinic.services.springdatajpa;
 
 import com.vkthumati.sfgpetclinic.model.Vet;
-import com.vkthumati.sfgpetclinic.repositories.SpecialtyRepository;
 import com.vkthumati.sfgpetclinic.repositories.VetRepository;
 import com.vkthumati.sfgpetclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;

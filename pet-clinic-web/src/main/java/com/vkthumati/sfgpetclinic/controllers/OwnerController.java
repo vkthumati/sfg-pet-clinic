@@ -2,7 +2,6 @@ package com.vkthumati.sfgpetclinic.controllers;
 
 import com.vkthumati.sfgpetclinic.model.Owner;
 import com.vkthumati.sfgpetclinic.services.OwnerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,15 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.List;
 
+@RequestMapping("/owners")
 @Controller
-@RequestMapping({"/owners"})
 public class OwnerController {
     private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
 
     private final OwnerService ownerService;
 
-    @Autowired
-    public OwnerController(OwnerService ownerService){
+    public OwnerController(OwnerService ownerService) {
         this.ownerService = ownerService;
     }
 
@@ -101,4 +99,5 @@ public class OwnerController {
             return "redirect:/owners/" + savedOwner.getId();
         }
     }
+
 }
