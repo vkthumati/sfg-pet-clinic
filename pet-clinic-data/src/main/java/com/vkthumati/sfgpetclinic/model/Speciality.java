@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @Table(name = "specialities")
-public class Specialty extends BaseEntity {
+public class Speciality extends BaseEntity {
 
     @JoinColumn(name = "description")
     private String description;

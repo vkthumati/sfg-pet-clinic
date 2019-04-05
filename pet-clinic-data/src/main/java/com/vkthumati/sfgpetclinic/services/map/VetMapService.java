@@ -1,6 +1,6 @@
 package com.vkthumati.sfgpetclinic.services.map;
 
-import com.vkthumati.sfgpetclinic.model.Specialty;
+import com.vkthumati.sfgpetclinic.model.Speciality;
 import com.vkthumati.sfgpetclinic.model.Vet;
 import com.vkthumati.sfgpetclinic.services.SpecialtyService;
 import com.vkthumati.sfgpetclinic.services.VetService;
@@ -33,10 +33,10 @@ public class VetMapService extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet domain) {
-        if(domain.getSpecialties().size()>0){
-            domain.getSpecialties().forEach(specialty -> {
+        if(domain.getSpecialities().size()>0){
+            domain.getSpecialities().forEach(specialty -> {
                 if(specialty.getId()==null){
-                    Specialty savedSpecialty1 = specialtyService.save(specialty);
+                    Speciality savedSpecialty1 = specialtyService.save(specialty);
                     specialty.setId(savedSpecialty1.getId());
                 }
             });

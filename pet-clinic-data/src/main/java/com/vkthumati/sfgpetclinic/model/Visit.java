@@ -17,7 +17,7 @@ public class Visit extends BaseEntity {
 
     @Column(name = "visit_date")
     //@CreationTimestamp("")
-    private LocalDate visitDate;
+    private LocalDate date;
 
     @Column(name = "description")
     private String description;
